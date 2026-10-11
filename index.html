@@ -20,6 +20,7 @@
 
 <body>
 
+  <nav aria-label="Return to OHLUCINDA" style="position:relative;z-index:2;padding:18px clamp(20px,4vw,52px);text-align:right;font:16px Georgia,serif"><a class="ohlucinda-return" href="https://ohlucinda.com/" style="color:inherit;text-decoration:underline;text-underline-offset:5px">← OHLUCINDA</a></nav>
   <!-- Page cover -->
   <header class="cover">
     <img
@@ -106,5 +107,14 @@
     <p>© 2024 All rights reserved</p>
   </footer>
 
+  <script>
+  (function(){
+    const param=new URLSearchParams(location.search).get('from_lang');
+    if(param==='en'||param==='ja'){try{sessionStorage.setItem('ohlucinda-origin-lang',param)}catch(e){}}
+    let lang=param==='en'||param==='ja'?param:null;
+    if(!lang){try{lang=sessionStorage.getItem('ohlucinda-origin-lang')}catch(e){}}
+    if(lang){document.querySelectorAll('a[href="https://ohlucinda.com/"]').forEach(a=>a.href='https://ohlucinda.com/?lang='+lang)}
+  })();
+  </script>
 </body>
 </html>
